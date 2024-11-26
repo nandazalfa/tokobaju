@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Keranjang Belanja</h1>
+        <div id="cartItems">
+            <!-- Daftar item keranjang akan ditampilkan di sini -->
+        </div>
+        <div class="text-end mt-3">
+            <span class="fw-bold">Total: Rp. <span id="cartTotal">0</span></span>
+        </div>
+        <div class="text-end mt-3">
+            <button class="btn btn-primary" onclick="checkout()">payment</button>
+        </div>
+    </div>
+
+    <script>
+        // Ambil data keranjang dari Local Storage atau jika kosong gunakan array kosong
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Fungsi untuk menampilkan isi keranjang di halaman cart
+        function displayCart() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = ""; // Kosongkan isi container
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'border-bottom', 'py-2');
+                itemElement.innerHTML = `
+                    <span>${item.name} (Ukuran: ${item.size})</span>
+                    <span>Rp. ${item.price.toLocaleString('id-ID')}</span>
+                    <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Hapus</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price;
+            });
+            document.getElementById('cartTotal').textContent = total.toLocaleString('id-ID');
+        }
+
+        // Fungsi untuk menghapus item dari keranjang
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Hapus item di index tertentu
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update Local Storage
+            displayCart(); // Refresh tampilan keranjang
+        }
+
+        // Fungsi checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Keranjang Anda kosong!');
+                return;
+            }
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            alert(`Total belanja Anda: Rp. ${total.toLocaleString('id-ID')}`);
+            cart = []; // Kosongkan keranjang setelah checkout
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update Local Storage
+            displayCart();
+
+            window.location.href = 'pembayaran.html';
+        }
+
+        // Tampilkan isi keranjang saat halaman dimuat
+        displayCart();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

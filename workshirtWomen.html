@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+            background-image: url('90s-Inspired Outerwear Revivals (1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .product-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .color-option {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .size-option {
+            padding: 5px 10px;
+            border: 1px solid #000;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+        .size-option.active {
+            background-color: #000;
+            color: #fff;
+        }
+        .quantity-selector input {
+            width: 50px;
+            text-align: center;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img id="mainImage" src="workshirt2.jpg" class="product-image" alt="Main Product Image">
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h1 class="card-title">Baby Blue Workshirt</h1>
+                                <p class="card-text text-muted">Rp 370.000</p>
+
+                                <p><strong>Warna:</strong> Baby Blue</p>
+                                <div class="color-option" style="background-color: rgb(145, 208, 227);"></div>
+
+                                <p class="mt-3"><strong>Ukuran:</strong></p>
+                                <div class="size-options">
+                                    <span class="size-option" onclick="selectSize('S')">S</span>
+                                    <span class="size-option" onclick="selectSize('M')">M</span>
+                                    <span class="size-option" onclick="selectSize('L')">L</span>
+                                    <span class="size-option" onclick="selectSize('XL')">XL</span>
+                                </div>
+
+                                <p class="mt-3"><strong>Jumlah:</strong></p>
+                                <div class="quantity-selector">
+                                    <button class="btn btn-outline-secondary" onclick="changeQuantity(-1)">-</button>
+                                    <input type="text" id="quantity" value="1" readonly>
+                                    <button class="btn btn-outline-secondary" onclick="changeQuantity(1)">+</button>
+                                </div>
+
+                                <button class="btn btn-dark mt-3 w-100" onclick="addToCart()">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedSize = '';
+        
+        function selectSize(size) {
+            selectedSize = size;
+            const sizeOptions = document.querySelectorAll('.size-option');
+            sizeOptions.forEach(option => {
+                option.classList.remove('active');
+                if (option.textContent === size) {
+                    option.classList.add('active');
+                }
+            });
+        }
+
+        function changeQuantity(amount) {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value);
+            quantity = Math.max(1, quantity + amount);
+            quantityInput.value = quantity;
+        }
+
+        function addToCart() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            if (!selectedSize) {
+                alert("Pilih ukuran terlebih dahulu.");
+                return;
+            }
+
+            // Ambil data produk
+            const product = {
+                name: "Baby Blue Workshirt",
+                price: 370000,
+                color: "Baby Blue",
+                size: selectedSize,
+                quantity: quantity,
+                imageUrl: document.getElementById('mainImage').src
+            };
+
+            // Simpan produk ke dalam localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
+
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += quantity;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`Added ${quantity} item(s) to cart`);
+            window.location.href = 'cart.html';
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

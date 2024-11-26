@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Pembayaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('WhatsApp Image 2024-11-10 at 18.48.34_6ef6a815 (1).jpg'); /* Ganti dengan URL gambar latar belakang */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 254, 254, 0.8); /* Warna abu-abu dengan transparansi */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px; /* Membuat sudut container sedikit melengkung */
+        }
+        h2 {
+            text-align: center;
+            color: #000000;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            border-bottom: 1px solid #000000;
+            padding-bottom: 10px;
+            color: #000000;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #000000;
+        }
+        .product-item img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .shipping-option, .payment-method {
+            margin-top: 10px;
+        }
+        .checkout-btn {
+            width: 97%;
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .checkout-btn:hover {
+            background-color: #000000;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #000000;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>PAYMENT</h2>
+
+    <!-- Section Alamat Pengiriman -->
+    <div class="section">
+        <h3>Alamat Pengiriman</h3>
+        <input type="text" class="input-field" placeholder="Nama Penerima">
+        <input type="text" class="input-field" placeholder="Alamat Lengkap">
+        <input type="text" class="input-field" placeholder="Kota">
+        <input type="text" class="input-field" placeholder="Nomor Telepon">
+    </div>
+
+    <!-- Section Opsi Pengiriman -->
+    <div class="section">
+        <h3>Opsi Pengiriman</h3>
+        <div class="shipping-option">
+            <input type="radio" id="standard" name="shipping" value="standard">
+            <label for="standard">Standard (2-5 hari) - Rp20.000</label>
+        </div>
+        <div class="shipping-option">
+            <input type="radio" id="express" name="shipping" value="express">
+            <label for="express">Express (1-2 hari) - Rp40.000</label>
+        </div>
+    </div>
+
+    <!-- Section Metode Pembayaran -->
+    <div class="section">
+        <h3>Metode Pembayaran</h3>
+        <div class="payment-method">
+            <input type="radio" id="transfer" name="payment" value="transfer">
+            <label for="transfer">Transfer Bank</label>
+        </div>
+        <div class="payment-method">
+            <input type="radio" id="creditcard" name="payment" value="creditcard">
+            <label for="creditcard">Kartu Kredit</label>
+        </div>
+        <div class="payment-method">
+            <input type="radio" id="cod" name="payment" value="cod">
+            <label for="cod">Bayar di Tempat (COD)</label>
+        </div>
+    </div>
+
+    <!-- Tombol Checkout -->
+    <a href="checkout.html" class="checkout-btn">Checkout</a>
+</div>
+
+</body>
+</html>

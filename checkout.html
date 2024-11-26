@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Berhasil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('90s-Inspired Outerwear Revivals (1).jpg'); /* Ganti dengan URL gambar Anda */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .message-container {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9); /* Transparan agar tetap terlihat */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-home {
+            margin-top: 20px;
+            background-color: #000; /* Warna hitam */
+            border: none;
+            color: #fff; /* Warna teks putih */
+        }
+        .btn-home:hover {
+            background-color: #333; /* Warna hitam lebih terang saat hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h1>Checkout Complete!</h1>
+        <p>Thank You For Shopping at the Zariel Collection.</p>
+        <p>We will Process Your Order.</p>
+        <a href="indeks.php" class="btn btn-home">Back To Home</a>
+    </div>
+
+    <script>
+        // Kosongkan keranjang setelah checkout berhasil
+        localStorage.removeItem('cart');
+    </script>
+</body>
+</html>

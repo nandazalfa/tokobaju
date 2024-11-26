@@ -1,0 +1,105 @@
+/* Mengatur tampilan dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Pengaturan latar belakang dan konten utama */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('90s-Inspired Outerwear Revivals (1).jpg') no-repeat center center/cover;
+}
+
+.container {
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6); /* latar belakang transparan */
+    padding: 30px;
+    border-radius: 15px;
+}
+
+/* Pengaturan header */
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Pengaturan tombol */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 15px 30px;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Mengatur tampilan dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Pengaturan latar belakang dan konten utama */
+body {
+    background-color: #f8f9fa; /* Warna latar belakang */
+}
+
+.container {
+    margin-top: 50px;
+}
+
+/* Pengaturan card produk */
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Pengaturan tombol */
+.btn-primary {
+    background-color: #696969;
+    border-color: #696969;
+}
+
+.btn-primary:hover {
+    background-color: #696969;
+    border-color: #696969;
+}
+
+.btn-success {
+    background-color: #B22222;
+    border-color: #B22222;
+}
+
+.btn-success:hover {
+    background-color: #B22222;
+    border-color: #B22222;
+}
+
